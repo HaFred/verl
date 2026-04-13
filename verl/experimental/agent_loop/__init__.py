@@ -13,9 +13,38 @@
 # limitations under the License.
 
 from .agent_loop import AgentLoopBase, AgentLoopManager, AgentLoopWorker, AsyncLLMServerManager
+from .processors import DefaultTokenProcessor, ProcessedOutput, TokenProcessor
+from .registry import RecipeConfig, build_components, register_processor, register_reward, register_strategy
+from .rewards import MultiStageRewardPipeline, RewardPipeline, RewardScorer, SingleRewardPipeline
 from .single_turn_agent_loop import SingleTurnAgentLoop
+from .strategies import BeamSearchStrategy, GenerationStrategy, SamplingStrategy
 from .tool_agent_loop import ToolAgentLoop
 
 _ = [SingleTurnAgentLoop, ToolAgentLoop]
 
-__all__ = ["AgentLoopBase", "AgentLoopManager", "AsyncLLMServerManager", "AgentLoopWorker"]
+__all__ = [
+    # Core
+    "AgentLoopBase",
+    "AgentLoopManager",
+    "AsyncLLMServerManager",
+    "AgentLoopWorker",
+    # Strategies
+    "GenerationStrategy",
+    "SamplingStrategy",
+    "BeamSearchStrategy",
+    # Rewards
+    "RewardPipeline",
+    "RewardScorer",
+    "SingleRewardPipeline",
+    "MultiStageRewardPipeline",
+    # Processors
+    "ProcessedOutput",
+    "TokenProcessor",
+    "DefaultTokenProcessor",
+    # Registry
+    "RecipeConfig",
+    "build_components",
+    "register_strategy",
+    "register_reward",
+    "register_processor",
+]
